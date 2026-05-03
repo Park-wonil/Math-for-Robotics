@@ -87,7 +87,7 @@ $$A\vec{v} = \lambda\vec{v}$$
 
 ---
 
-### 04 — 특이값 분해 (SVD) ⏳
+### 04 — 특이값 분해 (SVD)
 
 $$A = U \Sigma V^T$$
 
@@ -104,7 +104,7 @@ $$R \in SO(3), \quad \text{오일러각}, \quad q \in \mathbb{H}$$
 회전행렬·오일러각·쿼터니언을 비교하고, 짐벌락(Gimbal Lock) 문제를 시각화한다.
 쿼터니언은 ROS2의 표준 회전 표현.
 
-**📓 노트북:** `05_3d_rotations.ipynb` (예정)
+**📓노트북:** `05_3d_rotations.ipynb` (예정)
 
 ---
 
