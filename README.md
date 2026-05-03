@@ -129,7 +129,7 @@ jupyter notebook
 
 ---
 
-## 🛠 사용 도구
+##  사용 도구
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy)
@@ -139,10 +139,11 @@ jupyter notebook
 
 ---
 
-## 🎯 최종 목표
+##  최종 목표
 
 AI 로보틱스 분야 대학원 진학을 위한 포트폴리오 구축.
 수학 → 제어이론 → 로봇 기구학 → 강화학습 기반 로봇 제어까지 단계적으로 구현합니다.
+Kalman Filter 이해 목표
 
 ---
 
