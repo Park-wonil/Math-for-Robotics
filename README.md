@@ -11,8 +11,9 @@
 Phase 1 │ 수학 기초 시각화        ← 현재 진행 중
 Phase 2 │ 과학 컴퓨팅 (SciPy, 제어이론)
 Phase 3 │ Probabilistic Robotics (Bayes Filter, Localization, SLAM)
-Phase 4 │ AI + 로보틱스 융합 (RL, SLAM)
-Phase 5 │ 연구 수준 프로젝트 (논문 재현)
+Phase 4 │ Statistical Modeling for Robotics (Bayesian Modeling, GP)
+Phase 5 │ AI + 로보틱스 융합 (RL, SLAM)
+Phase 6 │ 연구 수준 프로젝트 (논문 재현)
 ```
 
 ---
@@ -35,7 +36,8 @@ math-for-robotics/
 │   └── assets/
 ├── calculus/                   # 미적분
 ├── differential_equations/     # 미분방정식·상태공간·Kalman Filter
-├── 04_probabilistic_robotics/  # Bayes Filter·MCL·Mapping·SLAM·MDP
+├── 04_probabilistic_robotics/  # Bayes Filter·MCL·Mapping·SLAM·SEIF·MDP
+├── 05_statistical_modeling_for_robotics/ # Likelihood·Bayesian Modeling·GP
 └── requirements.txt
 ```
 
@@ -369,6 +371,71 @@ $$H(b)=-\sum_x b(x)\log b(x)$$
 Frontier exploration과 belief entropy로 정보획득 기반 행동 선택을 시각화한다.
 
 **📓 노트북:** [`14_active_localization_exploration.ipynb`](04_probabilistic_robotics/14_active_localization_exploration.ipynb)
+
+---
+
+### 15 — Sparse Extended Information Filter (SEIF)
+
+$$\Omega=\Sigma^{-1}, \qquad \xi=\Omega\mu$$
+
+Information form과 sparsification으로 큰 SLAM 문제에서 희소 구조를 유지하는 아이디어를 다룬다.
+
+**📓 노트북:** [`15_sparse_extended_information_filter.ipynb`](04_probabilistic_robotics/15_sparse_extended_information_filter.ipynb)
+
+---
+
+### 16 — Data Association과 Unknown Correspondence
+
+$$c_t^i \in \{1,\dots,N,\text{new}\}$$
+
+Mahalanobis gating과 compatibility matrix로 관측과 landmark의 대응관계 추정을 구현한다.
+
+**📓 노트북:** [`16_data_association_unknown_correspondence.ipynb`](04_probabilistic_robotics/16_data_association_unknown_correspondence.ipynb)
+
+---
+
+### 17 — Multi-Hypothesis Localization과 Kidnapped Robot Recovery
+
+$$bel(x_t)=\sum_k \alpha_k \mathcal{N}(x_t;\mu_k,\Sigma_k)$$
+
+반복 패턴 환경의 multi-modal belief와 kidnapped robot 상황에서 particle injection을 시각화한다.
+
+**📓 노트북:** [`17_multi_hypothesis_localization.ipynb`](04_probabilistic_robotics/17_multi_hypothesis_localization.ipynb)
+
+---
+
+## 05. Statistical Modeling for Robotics
+
+로봇 센서, 동역학, 환경 모델은 데이터와 불확실성을 함께 다뤄야 한다.
+이 섹션은 likelihood modeling → Bayesian modeling → Gaussian Process 순서로 통계적 모델링을 로보틱스 문제에 연결한다.
+
+### 01 — 확률분포와 Likelihood Modeling
+
+$$z=h(x)+\epsilon, \qquad \epsilon\sim\mathcal{N}(0,\sigma^2)$$
+
+Range sensor noise를 Gaussian distribution으로 모델링하고, log-likelihood와 MLE로 센서 파라미터를 추정한다.
+
+**📓 노트북:** [`01_probability_distributions_and_likelihood.ipynb`](05_statistical_modeling_for_robotics/01_probability_distributions_and_likelihood.ipynb)
+
+---
+
+### 02 — Bayesian Modeling: Prior, Likelihood, Posterior
+
+$$p(\theta\mid D)=\frac{p(D\mid\theta)p(\theta)}{p(D)}$$
+
+Beta-Bernoulli 모델로 통과 성공 확률을 추정하고, Normal-Normal 모델로 range sensor bias를 Bayesian calibration한다.
+
+**📓 노트북:** [`02_bayesian_modeling_robotics.ipynb`](05_statistical_modeling_for_robotics/02_bayesian_modeling_robotics.ipynb)
+
+---
+
+### 03 — Gaussian Process Regression
+
+$$f(x)\sim\mathcal{GP}(m(x),k(x,x'))$$
+
+Terrain, friction, residual dynamics처럼 연속적인 미지 함수를 GP로 추정하고 posterior uncertainty로 active sensing 후보를 고른다.
+
+**📓 노트북:** [`03_gaussian_process_regression.ipynb`](05_statistical_modeling_for_robotics/03_gaussian_process_regression.ipynb)
 
 ---
 
